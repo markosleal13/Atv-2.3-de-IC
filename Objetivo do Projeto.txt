@@ -1,0 +1,16 @@
+O objetivo do projeto é desenvolver um código utilizando os modelos de previsão rnn, lstm e gru, para prever o preço de fechamento com base em uma planilha baixada da plataforma kaggle.
+Importação de bibliotecas: O código começa importando todas as bibliotecas necessárias para carregar e processar os dados, construir e treinar os modelos de aprendizado de máquina e plotar os resultados.
+
+Carregamento de dados: Os dados são carregados de um arquivo Excel no Google Drive. Em seguida, 100000 linhas aleatórias são selecionadas para reduzir o tamanho do conjunto de dados.
+
+
+Pré-processamento de dados: As colunas ‘open’, ‘high’, ‘low’ e ‘close’ são selecionadas do conjunto de dados. Uma nova coluna ‘output’ é adicionada, que é a coluna ‘close’ deslocada por um passo. Isso significa que para cada linha, a coluna ‘output’ contém o valor ‘close’ do próximo dia. Qualquer linha com valores NaN é removida. Os dados são então reescalados para o intervalo (-1, 1) usando um MinMaxScaler.
+Divisão de dados: Os dados são divididos em conjuntos de treinamento e teste. 80% dos dados são usados para treinamento e os 20% restantes são usados para teste.
+
+Construção e treinamento dos modelos: Três modelos diferentes são construídos e treinados: um modelo LSTM, um modelo RNN simples e um modelo GRU. Cada modelo é treinado nos dados de treinamento e validado nos dados de teste. O tempo de treinamento para cada modelo é registrado e impresso.
+
+Plotagem dos resultados: Os históricos de perda de treinamento e teste para cada modelo são plotados em um gráfico. As previsões de cada modelo nos dados de teste são geradas e desescaladas para a escala original dos dados. As previsões e os valores reais são então plotados em um gráfico para comparação.
+
+Vale salientar, que houve um tempo de treinamento mais veloz no modelo Rnn, além de melhores linhas de teste como presente na imagem print comparativo.png, presente na pasta docs.
+A partir do gráfico, o modelo Rnn teve um desempenho melhor na previsão dos preços de fechamento das ações em comparação com os modelos LSTM e GRU. 
+Pois como o Rnn é um modelo menos complexo em comparação com LSTM e GRU, que ele tem menos parâmetros para treinar, o que pode resultar em um tempo de treinamento mais rápido. Além disso, se o conjunto de dados não for complexo o suficiente para exigir a capacidade adicional de modelagem de sequência de longo prazo que LSTM e GRU oferecem, um RNN Simples pode superar esses modelos mais complexos. 
